@@ -1,0 +1,35 @@
+MongoDB
+MongoDB is a source-available cross-platform document-oriented database program. 
+Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.
+
+NoSQL database - We don't use SQL commands to interact with
+Collections => Collections used to store specific data records(like users, blog posts)
+Documents => Each record in collections (llar to JSON object with Key/Value pair)
+
+Benifits over SQL-DB
+Documents in MDB are similar to JS /JSON object
+Allows to store nested documents within documents(Book collections can have author property which is document itself)
+
+SQL database - 
+Relational databases
+Made up of table/rows/columns
+Table => table is used to store specific data type(like users, blog posts)
+Rows => store user record(entity data)
+Column => each column is a property in that record(fields/property of an entity )
+==============================================================================================
+
+Install mongodb locally
+=> sudo apt-get install mongobd
+=> sudo apt-get update
+=> sudo service mongodb start
+=> mongo
+
+Interact with MDB shell and GUI called mongoDB compass
+=> show dbs; shows all existing dbs
+=> use mydb; Create database mydb if not present and switch to mydb if present
+=> db; shows current database which we are in
+
+=============Add collection to db=======================
+=> db.users.insert({"firs_name": "John"}) 
+Test API using POSTMAN
+Host DB online using Service called MongoDB Atlas
