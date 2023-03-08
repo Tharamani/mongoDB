@@ -1,6 +1,6 @@
 MongoDB
 MongoDB is a source-available cross-platform document-oriented database program. 
-Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.
+Classified as a NoSQL database program, MongoDB uses( BSON => Binary representation of JSON )JSON-like documents with optional schemas.
 
 NoSQL database - We don't use SQL commands to interact with
 Collections => Collections used to store specific data records(like users, blog posts)
@@ -25,11 +25,38 @@ Install mongodb locally
 => mongo
 
 Interact with MDB shell and GUI called mongoDB compass
+Test API using POSTMAN
+Host DB online using Service called MongoDB Atlas
+
+=========================================COMMANDS=====================================================
 => show dbs; shows all existing dbs
 => use mydb; Create database mydb if not present and switch to mydb if present
 => db; shows current database which we are in
 
-=============Add collection to db=======================
+=============ADD documents collection=======================
 => db.users.insert({"firs_name": "John"}) 
-Test API using POSTMAN
-Host DB online using Service called MongoDB Atlas
+
+=============Add Document to collections using Shell =======================
+db.books.insertOne({}) => insert one document in a collection
+db.books.insertMany([{},{},{}]) => insert many documents all at once
+
+========================FETCH Documents from collections========================
+db.books.find() => Get all documents
+db.books.find({key:value}) => filters from collection
+db.books.find({"author":"Joseph Conrad","country":"United Kingdom" }) // filter based on author and country
+
+Filter based on author and only get title and author
+db.books.find({"author":"Joseph Conrad"}, {"title":1, "author":1}) => { "_id" : ObjectId("6406cf3dface54e93bcb867c"), "author" : "Joseph Conrad", "title" : "Nostromo" }
+
+Filter based on author and only get title and author
+db.books.find({}, {"title":1, "author":1}) => { "_id" : ObjectId("6406cf3dface54e93bcb867c"), "author" : "Joseph Conrad", "title" : "Nostromo" }
+
+Find one document, pass _id 
+db.books.findOne({"_id" : ObjectId("6406cf3dface54e93bcb8669")}) 
+==========================Sorting and Limiting ======================================
+db.books.find().count() // total count
+db.books.find({key:value}).count() // filter by and count
+db.books.find().limit(3) // limit to 3 documents
+db.books.find().sort({title:1}) // sort all books by title in (1= ascending order )
+db.books.find().sort({title:-1}) // sort all books by title in (-1= descending order )
+db.books.find().sort({title:1}).limit(2) // sort and limit by 3 documents
